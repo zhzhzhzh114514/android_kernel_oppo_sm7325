@@ -122,19 +122,16 @@ jobs:
           ref: oppo/sm7325_v_15.0.0_k11
           
       - name: ⌛️ Compilation environment preparation
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/build-env
-          
-      - name: ⌛️ Compilation environment preparation
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/build-env
+        uses: ./github/workflows/build-env.yml
 
       - name: ⚙️ Get necessary tools
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/build-ready
+        uses: ./.github/workflows/build-ready.yml
 
       - name: 🪝 Patch Kernel of SUSFS
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-susfs
+        uses: ./.github/workflows/patch-susfs.yml
 
       - name: 🔗 Patch for no-kprobe
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-no-kprobe
+        uses: ./.github/workflows/patch-no-kprobe.yml
 
       - name: 🪛 Extra Kernel Options
         run: |
@@ -143,17 +140,11 @@ jobs:
 
           # Nothing
 
-      - name: 🧰 Patch Kernel of Re:Kernel
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-rekernel
-
-      - name: 💿 Patch Kernel of Droidspaces
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-droidspaces
-
       - name: 🔒 Patch Kernel of Baseband Guard
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-baseband-guard
+        uses: ./.github/workflows/patch-baseband-guard.yml
 
       - name: 🛡️ Patch Kernel of NoMount
-        uses: https://github.com/zhzhzhzh114514/NonGKI_Kernel_Build_2nd/tree/mainline/.github/workflows/patch-nomount
+        uses: ./.github/workflows/patch-nomount.yml
 
       - name: Prepare Compiler
         run: |
