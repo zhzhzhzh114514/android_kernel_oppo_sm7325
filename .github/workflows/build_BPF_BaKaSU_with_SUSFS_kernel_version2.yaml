@@ -122,16 +122,16 @@ jobs:
           ref: oppo/sm7325_v_15.0.0_k11
           
       - name: ⌛️ Compilation environment preparation
-        uses: ./github/workflows/build-env.yml
+        uses: ./github/workflows/build-env
 
       - name: ⚙️ Get necessary tools
-        uses: ./.github/workflows/build-ready.yml
+        uses: ./.github/workflows/build-ready
 
       - name: 🪝 Patch Kernel of SUSFS
-        uses: ./.github/workflows/patch-susfs.yml
+        uses: ./.github/workflows/patch-susfs
 
       - name: 🔗 Patch for no-kprobe
-        uses: ./.github/workflows/patch-no-kprobe.yml
+        uses: ./.github/workflows/patch-no-kprobe
 
       - name: 🪛 Extra Kernel Options
         run: |
@@ -141,10 +141,10 @@ jobs:
           # Nothing
 
       - name: 🔒 Patch Kernel of Baseband Guard
-        uses: ./.github/workflows/patch-baseband-guard.yml
+        uses: ./.github/workflows/patch-baseband-guard
 
       - name: 🛡️ Patch Kernel of NoMount
-        uses: ./.github/workflows/patch-nomount.yml
+        uses: ./.github/workflows/patch-nomount
 
       - name: Prepare Compiler
         run: |
