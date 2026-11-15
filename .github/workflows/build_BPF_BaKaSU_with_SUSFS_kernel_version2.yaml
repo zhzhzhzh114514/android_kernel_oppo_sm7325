@@ -10,14 +10,8 @@ env:
   DEVICE_NAME : "realme_q3s_cn"
   DEVICE_CODENAME : "ice"
 
-  CUSTOM_CMDS : "CROSS_COMPILE=aarch64-linux-gnu- NM=llvm-nm OBJDUMP=llvm-objdump STRIP=llvm-strip"
-  EXTRA_CMDS : ""
-
   KERNEL_SOURCE : "https://github.com/zhzhzhzh114514/android_kernel_oppo_sm7325.git"
   KERNEL_BRANCH : "5.10-bpf"
-
-  CLANG_SOURCE : "https://github.com/ZYouXPro/android_kernel_oppo_sm7325/releases/download/K11/linux-x86-refs_heads_llvm-r383902b-clang-r383902.tar.gz"
-  CLANG_BRANCH : ""
 
   GCC_GNU : false
   GCC_64_SOURCE : "https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.git"
@@ -120,6 +114,48 @@ jobs:
           repository: oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325
           path: temp_modules
           ref: oppo/sm7325_v_15.0.0_k11
+          
+      - name: Checkout Actions File0
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/build-env
+          path: ./.github/workflows/build-env
+          ref: 5.10-bpf
+          
+          - name: Checkout Actions File1
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/build-ready
+          path: ./.github/workflows/build-ready
+          ref: 5.10-bpf
+          
+          - name: Checkout Actions File2
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/patch-nomount
+          path: ./.github/workflows/patch-nomount
+          ref: 5.10-bpf
+          
+          - name: Checkout Actions File3
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/patch-no-kprobe
+          path: ./.github/workflows/patch-no-kprobe
+          ref: 5.10-bpf
+          
+         - name: Checkout Actions File4
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/patch-baseband-guard
+          path: ./.github/workflows/patch-baseband-guard
+          ref: 5.10-bpf
+          
+          - name: Checkout Actions File5
+        uses: actions/checkout@v6
+        with:
+          repository: zhzhzhzh114514/android_kernel_oppo_sm7325/.github/workflows/patch-susfs
+          path: ./.github/workflows/patch-susfs
+          ref: 5.10-bpf
           
       - name: ⚙️ Get necessary tools
         uses: ./.github/workflows/build-ready
