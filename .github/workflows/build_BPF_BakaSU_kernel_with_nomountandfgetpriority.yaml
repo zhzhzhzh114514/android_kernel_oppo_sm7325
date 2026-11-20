@@ -61,7 +61,7 @@ jobs:
       - name: Patch fgetpriority
         shell: bash
         run: |
-          cd /kernel/msm-5.4
+          cd kernel/msm-5.4
 
           if ! grep -q "fgetpriority" "drivers/Kconfig"; then
 
@@ -81,7 +81,7 @@ jobs:
       - name: Patch NoMount
         shell: bash
         run: |
-          cd /kernel/msm-5.4
+          cd kernel/msm-5.4
           curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/master/kernel/setup.sh | bash -s
 
           echo "CONFIG_NOMOUNT=y" >> ./arch/arm64/configs/shit_defconfig
