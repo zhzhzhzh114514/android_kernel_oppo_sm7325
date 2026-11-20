@@ -57,10 +57,7 @@ jobs:
           BUILD_DATE=$(date +%Y%m%d)
           echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_ENV
           
-      - name: 'Patch fgetpriority for Kernel.'
-        runs:
-         using: 'composite'
-         steps:
+     
       - name: Patch fgetpriority
         shell: bash
         run: |
@@ -81,10 +78,6 @@ jobs:
             echo "[-] Kernel has been embedded in fgetpriority, Skipped."
           fi
 
-      - name: 'Patch NoMount for Kernel.'
-        runs:
-        using: 'composite'
-        steps:
       - name: Patch NoMount
         shell: bash
         run: |
