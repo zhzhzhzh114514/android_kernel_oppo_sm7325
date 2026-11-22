@@ -39,6 +39,9 @@ jobs:
 
       - name: Prepare Compiler
         run: |
+          mkdir -p kernel
+          cd kernel
+          mkdir -p msm-5.4
           mkdir -p compiler
           cd compiler
           curl -fL "https://github.com/ZYouXPro/android_kernel_oppo_sm7325/releases/download/K11/linux-x86-refs_heads_llvm-r383902b-clang-r383902.tar.gz" -o clang-r383902.tar.gz --connect-timeout 30 --retry 5 --retry-delay 5
