@@ -39,9 +39,6 @@ jobs:
 
       - name: Prepare Compiler
         run: |
-          mkdir -p kernel
-          cd kernel
-          mkdir -p msm-5.4
           mkdir -p compiler
           cd compiler
           curl -fL "https://github.com/ZYouXPro/android_kernel_oppo_sm7325/releases/download/K11/linux-x86-refs_heads_llvm-r383902b-clang-r383902.tar.gz" -o clang-r383902.tar.gz --connect-timeout 30 --retry 5 --retry-delay 5
@@ -64,7 +61,7 @@ jobs:
       - name: Patch fgetpriority
         shell: bash
         run: |
-          cd kernel/msm-5.4
+          cd home/runner/work/android_kernel_oppo_sm7325/android_kernel_oppo_sm7325/kernel/msm-5.4
 
           if ! grep -q "fgetpriority" "drivers/Kconfig"; then
 
@@ -84,7 +81,7 @@ jobs:
       - name: Patch NoMount
         shell: bash
         run: |
-          cd kernel/msm-5.4
+          cd home/runner/work/android_kernel_oppo_sm7325/android_kernel_oppo_sm7325/kernel/msm-5.4
           curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/master/kernel/setup.sh | bash -s
 
           echo "CONFIG_NOMOUNT=y" >> ./arch/arm64/configs/shit_defconfig
